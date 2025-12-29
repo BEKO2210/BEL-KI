@@ -261,13 +261,28 @@
         </div>
 
         <div class="text-center mt-12">
-          <a href="https://www.paypal.com/paypalme/renateweinfurtner" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="display: inline-flex; align-items: center; gap: 0.75rem;">
+          <a href="https://www.paypal.com/send" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" style="display: inline-flex; align-items: center; gap: 0.75rem;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.806-3.276 5.12-6.514 5.12h-.5a.805.805 0 0 0-.794.68l-.04.22-.63 3.993-.028.154a.804.804 0 0 1-.794.68H7.72a.483.483 0 0 1-.477-.558L9.187 7.09a.962.962 0 0 1 .95-.807h4.42c1.393 0 2.456.296 3.218.92.433.355.748.785.96 1.275z"/><path d="M10.43 7.262a.805.805 0 0 1 .793-.68h5.45c.65 0 1.258.052 1.815.18.18.04.36.094.535.148.174.06.345.123.507.198.08.035.16.077.238.118.078.04.153.083.228.126.148.088.29.184.425.29.14.11.27.226.394.35.13.13.254.27.367.42.11.15.213.31.296.48.09.17.165.35.226.538.06.19.108.39.138.593.03.203.047.418.047.645 0 .23-.017.47-.055.716-.037.247-.095.51-.174.788-.08.278-.183.575-.312.887-.13.313-.296.64-.497.978-.2.338-.444.68-.73 1.018-.285.34-.62.664-.997.96-.377.297-.806.567-1.285.793-.48.227-1.01.41-1.585.538-.576.13-1.197.19-1.858.19h-.45a.805.805 0 0 0-.795.68l-.04.22-.63 3.992-.028.154a.804.804 0 0 1-.794.68H7.72a.483.483 0 0 1-.477-.557l1.766-11.18.15-.946a.962.962 0 0 1 .95-.807h.318z" opacity=".7"/></svg>
             Jetzt via PayPal spenden
           </a>
-          <p style="margin-top: 1rem; font-size: 0.875rem; color: rgba(255,255,255,0.6);">
-            Empfänger: renateweinfurtner@gmx.de
-          </p>
+
+          <div style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(188, 19, 254, 0.1); border: 1px solid rgba(188, 19, 254, 0.3); border-radius: 0.75rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: rgba(255,255,255,0.9); font-weight: 600;">
+              💡 So funktioniert's:
+            </p>
+            <ol style="text-align: left; margin: 0; padding-left: 1.5rem; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.8;">
+              <li>Klicke auf "Jetzt via PayPal spenden"</li>
+              <li>PayPal öffnet sich → "Geld senden"</li>
+              <li>Gib als Empfänger ein: <strong style="color: #bc13fe;">renateweinfurtner@gmx.de</strong></li>
+              <li>Wähle deinen Betrag & sende</li>
+            </ol>
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(0,0,0,0.3); border-radius: 0.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+              <code id="paypalEmail" style="color: #00f3ff; font-size: 0.875rem; flex: 1;">renateweinfurtner@gmx.de</code>
+              <button onclick="copyPayPalEmail()" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem; white-space: nowrap;">
+                📋 Kopieren
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -341,5 +356,28 @@
   <!-- Scripts -->
   <script src="./assets/js/canvas.js" defer></script>
   <script src="./assets/js/main.js" defer></script>
+  <script>
+    // PayPal Email Copy Function
+    function copyPayPalEmail() {
+      const email = 'renateweinfurtner@gmx.de';
+      const button = event.target;
+
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Kopiert!';
+        button.style.background = '#00ff88';
+        button.style.color = '#030303';
+
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = '';
+          button.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Fehler beim Kopieren:', err);
+        button.innerHTML = '✗ Fehler';
+      });
+    }
+  </script>
 </body>
 </html>

@@ -8,10 +8,20 @@
 // CONFIGURATION
 // ============================================
 
-const HF_TOKEN = "HIER_TOKEN_EINFUEGEN"; // ⚠️ Token hier einfügen
+// Configuration
 const HF_MODEL_URL = "https://api-inference.huggingface.co/models/beko2210/Bel-KI-v1";
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 20000; // 20 seconds
+
+// Get token from localStorage or prompt user
+function getToken() {
+  return localStorage.getItem('hf_token') || null;
+}
+
+// Set token in localStorage
+function setToken(token) {
+  localStorage.setItem('hf_token', token);
+}
 
 // ============================================
 // STATE MANAGEMENT
@@ -78,7 +88,7 @@ async function checkModelStatus() {
     const response = await fetch(HF_MODEL_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${HF_TOKEN}`,
+        'Authorization': `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -109,9 +119,10 @@ async function handleSendMessage() {
   // Validation
   if (!message || isProcessing) return;
 
-  // Check if token is configured
-  if (HF_TOKEN === "HIER_TOKEN_EINFUEGEN") {
-    addSystemMessage("⚠️ Fehler: HuggingFace Token ist nicht konfiguriert. Bitte Token in bel-brain.js einfügen.");
+  // Check if token exists
+  const token = getToken();
+  if (!token) {
+    addSystemMessage("⚠️ **Kein Token gefunden!**\n\nBitte lade die Seite neu und gib deinen HuggingFace Token ein.");
     return;
   }
 
@@ -227,7 +238,7 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
     const response = await fetch(HF_MODEL_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${HF_TOKEN}`,
+        'Authorization': `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

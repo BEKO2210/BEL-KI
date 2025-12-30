@@ -409,6 +409,75 @@
     </div>
   </div>
 
+  <!-- Token Setup Modal -->
+  <div id="tokenModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+    <div style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 2px solid var(--color-cyan); border-radius: 1.5rem; padding: 2rem; max-width: 500px; width: 100%; box-shadow: 0 0 50px rgba(0, 243, 255, 0.5);">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--color-cyan), var(--color-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        🔑 HuggingFace Token eingeben
+      </h2>
+      <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.8); line-height: 1.6;">
+        Um mit BEL KI zu chatten, benötigst du einen HuggingFace Token.
+      </p>
+      <input
+        type="text"
+        id="tokenInput"
+        placeholder="hf_..."
+        style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: var(--color-white); font-size: 1rem; font-family: 'Courier New', monospace; margin-bottom: 1rem;"
+      />
+      <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem;">
+        Dein Token wird nur lokal in deinem Browser gespeichert.
+      </p>
+      <button
+        id="saveTokenBtn"
+        style="width: 100%; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, var(--color-cyan), var(--color-purple)); border: none; border-radius: 0.75rem; color: var(--color-black); font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform 0.2s ease;"
+        onmouseover="this.style.transform='scale(1.02)'"
+        onmouseout="this.style.transform='scale(1)'"
+      >
+        Token speichern
+      </button>
+      <p style="font-size: 0.875rem; color: rgba(255,255,255,0.6); margin-top: 1rem; text-align: center;">
+        <a href="https://huggingface.co/settings/tokens" target="_blank" rel="noopener noreferrer" style="color: var(--color-cyan); text-decoration: underline;">
+          Token erstellen auf HuggingFace →
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Token Check Script -->
+  <script>
+    // Check if token exists on page load
+    (function() {
+      const token = localStorage.getItem('hf_token');
+      const modal = document.getElementById('tokenModal');
+      const tokenInput = document.getElementById('tokenInput');
+      const saveTokenBtn = document.getElementById('saveTokenBtn');
+
+      if (!token) {
+        // Show modal if no token
+        modal.style.display = 'flex';
+      }
+
+      // Save token button
+      saveTokenBtn.addEventListener('click', () => {
+        const inputToken = tokenInput.value.trim();
+        if (inputToken && inputToken.startsWith('hf_')) {
+          localStorage.setItem('hf_token', inputToken);
+          modal.style.display = 'none';
+          window.location.reload(); // Reload to initialize chat
+        } else {
+          alert('Bitte gib einen gültigen HuggingFace Token ein (beginnt mit "hf_")');
+        }
+      });
+
+      // Enter key to save
+      tokenInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          saveTokenBtn.click();
+        }
+      });
+    })();
+  </script>
+
   <!-- BEL Brain Logic -->
   <script src="./assets/js/bel-brain.js"></script>
 </body>

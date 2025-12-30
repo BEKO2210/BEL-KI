@@ -51,6 +51,16 @@ Während Tech-Giganten Milliarden in KI pumpen und dir erzählen, was du hören 
 - **Q4_K_M** = Optimal quantisiert für maximale Performance bei minimaler Größe
 - **GermanQuAD** = Spezialisiert auf deutsche Sprache, nicht einfach nur übersetzt
 
+### Offizielle Benchmarks (GermanQuAD Validation)
+
+| Metrik | BEL KI v1.0 | Interpretation |
+|--------|-------------|----------------|
+| **F1 Score** | **87.64%** | Inhaltliche Genauigkeit (Production-Ready) |
+| **Exact Match** | **70.00%** | 14/20 Fragen perfekt beantwortet |
+| **Final Loss** | **0.530** | Optimale Konvergenz ohne Overfitting |
+
+*Reproduzierbar via [`src/evaluate.py`](src/evaluate.py) • Dokumentation: [`src/README.md`](src/README.md)*
+
 ---
 
 ## 💰 Die Realität: David vs. Goliath
@@ -64,8 +74,10 @@ Während Tech-Giganten Milliarden in KI pumpen und dir erzählen, was du hören 
 ### Wo wir hin müssen:
 - 🎯 **100.000 €** für 3 Monate H100-Cluster
 - 🎯 Llama-3.1-**70B** Training
-- 🎯 10x besseres Sprachverständnis
-- 🎯 Multimodale Fähigkeiten (Code, Reasoning, Mathematik)
+- 🎯 **F1-Score: 94%+** (aktuell 87.6%) auf GermanQuAD
+- 🎯 **Exact Match: 85%+** (aktuell 70%) auf deutschen QA-Tasks
+- 🎯 **HumanEval Pass@1: 60%+** für Code-Generierung
+- 🎯 **GSM8K: 75%+** für mathematisches Reasoning
 
 ### Was das bedeutet:
 
@@ -123,10 +135,14 @@ BEL KI v1.0 (Final Loss: 0.530)
 # 1. Modell downloaden von HuggingFace
 wget https://huggingface.co/Beko2210/Bel-KI-v1-GGUF/resolve/main/Bel-KI-v1-Q4_K_M.gguf
 
-# 2. llama.cpp installieren
+# 2. SHA256 Hash verifizieren (optional)
+sha256sum Bel-KI-v1-Q4_K_M.gguf
+# Expected: 8B97EC63954565EBF6BB8F495E854957FD9D605EB84FAF7795D5FFB101BD0624
+
+# 3. llama.cpp installieren
 pip install llama-cpp-python
 
-# 3. Modell laden und nutzen
+# 4. Modell laden und nutzen
 python
 ```
 

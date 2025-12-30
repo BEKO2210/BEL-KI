@@ -58,6 +58,7 @@ export default {
       }
 
       // Forward to HuggingFace Router (Chat Completions API)
+      // Using Llama-3.2-3B-Instruct for testing (deployed, multilingual, works in German)
       const hfResponse = await fetch('https://router.huggingface.co/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -65,7 +66,7 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'Beko2210/Bel-KI-v1-GGUF',
+          model: 'meta-llama/Llama-3.2-3B-Instruct',
           messages: messages,
           max_tokens: max_tokens || 512,
           temperature: temperature || 0.7,

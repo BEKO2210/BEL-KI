@@ -1,7 +1,7 @@
 /**
  * BEL BRAIN - Client-Side AI Chat Logic
  * HuggingFace Router API (Chat Completions)
- * Model: Beko2210/Bel-KI-v1-GGUF
+ * Model: meta-llama/Llama-3.2-3B-Instruct (Testing - multilingual, works in German)
  */
 
 // ============================================

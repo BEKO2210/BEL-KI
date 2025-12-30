@@ -33,9 +33,19 @@ Dieses Repository enthält **alle Formate** von Bel KI v1:
 
 | Format | Dateien | Größe | Verwendung |
 |--------|---------|-------|------------|
-| **🔥 GGUF Q4_K_M** | `Bel-KI-v1-Q4_K_M.gguf` | ~4.92 GB | LM Studio, Ollama, llama.cpp |
-| **📊 16-bit (FP16)** | `model-0000X-of-00004.safetensors` | ~15 GB | Transformers, vLLM, Forschung |
+| **🔥 GGUF Q4_K_M** | `Bel-KI-v1-Q4_K_M.gguf` | ~4.92 GB | LM Studio, Ollama, llama.cpp (Desktop) |
+| **📱 GGUF IQ2_M** | `Bel-KI-v1-IQ2_M.gguf` | **~2.8 GB** | **Smartphones, Tablets, Low-RAM Geräte** |
+| **📊 16-bit (FP16)** | `model-0000X-of-00004.safetensors` | ~15 GB | Transformers, vLLM, Forschung, Server |
 | **🔧 LoRA Adapter** | `adapter_model.safetensors` | ~168 MB | Merge mit Base-Model |
+
+### 🆕 NEU: Alpha Version - Mobile Release!
+
+**IQ2_M GGUF** ist speziell für Mobile Devices optimiert:
+- ✅ Nur **2.8 GB** statt 4.9 GB
+- ✅ Läuft auf **Smartphones & Tablets** (4 GB RAM)
+- ✅ **100% offline** - kein Internet nötig
+- ✅ **Android/iOS Ready** - App folgt Q1 2025
+- ✅ Optimiert für **Raspberry Pi** & Low-Power Geräte
 
 ---
 
@@ -80,10 +90,12 @@ Get-FileHash model-00001-of-00004.safetensors -Algorithm SHA256
 | Anwendungsfall | Empfehlung |
 |----------------|------------|
 | Chat auf eigenem PC (LM Studio, Ollama) | → **GGUF Q4_K_M** (~4.9 GB) |
-| Python/Hugging Face Transformers | → **FP16 Master** (~15 GB) |
-| Eigenes Fine-Tuning / Weiter-Training | → **FP16 Master** |
-| Maximale Qualität (Server mit viel VRAM) | → **FP16 Master** |
-| Neue Quantisierungen erstellen | → **FP16 Master** |
+| **Smartphone / Tablet / Mobile** | → **📱 GGUF IQ2_M** (~2.8 GB) |
+| **Raspberry Pi / Low-RAM Geräte** | → **GGUF IQ2_M** (~2.8 GB) |
+| Python/Hugging Face Transformers | → **FP16 Master** (~16 GB) |
+| Eigenes Fine-Tuning / Weiter-Training | → **FP16 Master** (~16 GB) |
+| Maximale Qualität (Server mit viel VRAM) | → **FP16 Master** (~16 GB) |
+| Neue Quantisierungen erstellen | → **FP16 Master** (~16 GB) |
 
 ### 💻 Master in Python laden
 ```python
@@ -111,10 +123,20 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 | Anwendungsfall | Empfohlenes Format |
 |----------------|-------------------|
-| Chat auf eigenem PC | GGUF Q4_K_M |
-| Python/Hugging Face Transformers | 16-bit Safetensors |
-| Eigenes Weiter-Training | LoRA Adapter |
-| Maximale Qualität (Server) | 16-bit Safetensors |
+| Chat auf eigenem PC (Desktop) | **GGUF Q4_K_M** (~4.9 GB) |
+| **Smartphone / Tablet / Mobile** | **📱 GGUF IQ2_M** (~2.8 GB) |
+| Raspberry Pi / Low-RAM | **GGUF IQ2_M** (~2.8 GB) |
+| Python/Hugging Face Transformers | 16-bit Safetensors (~16 GB) |
+| Eigenes Weiter-Training | LoRA Adapter oder FP16 |
+| Maximale Qualität (Server) | 16-bit Safetensors (~16 GB) |
+
+### 🌐 Live Chat (BETA) - Teste BEL KI jetzt!
+
+Du kannst BEL KI **sofort im Browser** testen - kein Download nötig!
+
+👉 **[Live Chat ausprobieren](https://beko2210.github.io/BEL-KI/live-chat.html)**
+
+*Aktuell läuft der Chat mit Llama-3.2-3B-Instruct zum Testen. Das eigene BEL KI Modell kommt bald!*
 
 ---
 
@@ -327,10 +349,12 @@ Get-FileHash model-00004-of-00004.safetensors -Algorithm SHA256
 | Anwendungsfall | Empfehlung |
 |----------------|------------|
 | Chat auf eigenem PC (LM Studio, Ollama) | → **GGUF Q4_K_M** (~4.9 GB) |
-| Python/Hugging Face Transformers | → **FP16 Master** (~15 GB) |
-| Eigenes Fine-Tuning / Weiter-Training | → **FP16 Master** |
-| Maximale Qualität (Server mit viel VRAM) | → **FP16 Master** |
-| Neue Quantisierungen erstellen | → **FP16 Master** |
+| **Smartphone / Tablet / Mobile** | → **📱 GGUF IQ2_M** (~2.8 GB) |
+| **Raspberry Pi / Low-RAM Geräte** | → **GGUF IQ2_M** (~2.8 GB) |
+| Python/Hugging Face Transformers | → **FP16 Master** (~16 GB) |
+| Eigenes Fine-Tuning / Weiter-Training | → **FP16 Master** (~16 GB) |
+| Maximale Qualität (Server mit viel VRAM) | → **FP16 Master** (~16 GB) |
+| Neue Quantisierungen erstellen | → **FP16 Master** (~16 GB) |
 
 ### 💻 Master in Python laden
 
@@ -402,11 +426,11 @@ Q4_K_M ist der Sweet Spot zwischen:
 - [ ] VS Code Extension
 - [ ] Docker Container
 
-### 2027 - Mobile Revolution
-- [ ] Native iOS & Android Apps
-- [ ] On-Device Inference
-- [ ] 100% Offline-fähig
-- [ ] Quantisiert für Mobile (2-3 GB)
+### Q1 2025 - Mobile Revolution 📱
+- [x] **IQ2_M Quantisierung (2.8 GB)** ✅ Released!
+- [x] **Optimiert für Smartphones & Tablets** ✅
+- [x] **100% Offline-fähig** ✅
+- [ ] Native iOS & Android Apps (in Entwicklung)
 
 ### Beyond - Multimodal & AGI-Ready
 - [ ] Vision-Language-Modelle
@@ -516,7 +540,8 @@ Für kommerzielle Nutzung kontaktiere bitte: belkis.aslani@gmail.com
 
 ## 🔗 Links
 
-- 🌐 **Website**: [belkis-aslani.de](https://belkis-aslani.de)
+- 🌐 **Website**: [beko2210.github.io/BEL-KI](https://beko2210.github.io/BEL-KI/)
+- 💬 **Live Chat (BETA)**: [Live testen](https://beko2210.github.io/BEL-KI/live-chat.html)
 - 🤗 **HuggingFace**: [Beko2210/Bel-KI-v1-GGUF](https://huggingface.co/Beko2210/Bel-KI-v1-GGUF)
 - 🐙 **GitHub**: [BEKO2210/BEL-KI](https://github.com/BEKO2210/BEL-KI)
 - 💰 **Spenden**: [PayPal](https://www.paypal.com/donate/?business=renateweinfurtner@gmx.de)

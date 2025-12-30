@@ -1,6 +1,7 @@
 /**
- * Cloudflare Worker - HuggingFace API Proxy
- * Löst CORS-Probleme für Browser-Anfragen
+ * Cloudflare Worker - HuggingFace API Proxy (SECURE VERSION)
+ * Token wird als Cloudflare Secret gespeichert (nicht im Code!)
+ * Frontend sendet nur inputs/parameters, KEIN Token
  */
 
 export default {
@@ -8,8 +9,8 @@ export default {
     // CORS Headers
     const corsHeaders = {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
     };
 
     // Handle preflight request
@@ -30,23 +31,33 @@ export default {
     try {
       // Parse request body
       const body = await request.json();
-      const { token, inputs, parameters } = body;
+      const { inputs, parameters } = body;
 
-      // Validate token
-      if (!token || !token.startsWith('hf_')) {
+      // Check if HF_TOKEN secret is configured
+      if (!env.HF_TOKEN) {
         return new Response(JSON.stringify({
-          error: 'Invalid or missing HuggingFace token'
+          error: 'HF_TOKEN secret missing in Cloudflare Worker. Please configure it in Worker Settings → Variables.'
         }), {
-          status: 401,
+          status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
       }
 
-      // Forward to HuggingFace
+      // Validate inputs
+      if (!inputs) {
+        return new Response(JSON.stringify({
+          error: 'Missing required field: inputs'
+        }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      // Forward to HuggingFace (Token kommt aus env.HF_TOKEN)
       const hfResponse = await fetch('https://api-inference.huggingface.co/models/beko2210/Bel-KI-v1', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${env.HF_TOKEN}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -55,10 +66,10 @@ export default {
         })
       });
 
-      const hfData = await hfResponse.json();
+      const text = await hfResponse.text();
 
       // Return response with CORS headers
-      return new Response(JSON.stringify(hfData), {
+      return new Response(text, {
         status: hfResponse.status,
         headers: {
           ...corsHeaders,

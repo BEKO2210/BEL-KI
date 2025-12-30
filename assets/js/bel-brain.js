@@ -8,20 +8,10 @@
 // CONFIGURATION
 // ============================================
 
-// Configuration
-const HF_MODEL_URL = "https://api-inference.huggingface.co/models/beko2210/Bel-KI-v1";
+// Cloudflare Worker Proxy URL (Token ist sicher im Worker gespeichert!)
+const PROXY_URL = "https://bel-ki-proxy.belkis-aslani.workers.dev";
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 20000; // 20 seconds
-
-// Get token from localStorage or prompt user
-function getToken() {
-  return localStorage.getItem('hf_token') || null;
-}
-
-// Set token in localStorage
-function setToken(token) {
-  localStorage.setItem('hf_token', token);
-}
 
 // ============================================
 // STATE MANAGEMENT
@@ -85,10 +75,9 @@ function setStatus(status, text) {
 
 async function checkModelStatus() {
   try {
-    const response = await fetch(HF_MODEL_URL, {
+    const response = await fetch(PROXY_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -118,13 +107,6 @@ async function handleSendMessage() {
 
   // Validation
   if (!message || isProcessing) return;
-
-  // Check if token exists
-  const token = getToken();
-  if (!token) {
-    addSystemMessage("⚠️ **Kein Token gefunden!**\n\nBitte lade die Seite neu und gib deinen HuggingFace Token ein.");
-    return;
-  }
 
   // Add user message to UI
   addMessage(message, 'user');
@@ -235,10 +217,9 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
     // Build prompt with Llama-3 template
     const prompt = buildPrompt(userMessage);
 
-    const response = await fetch(HF_MODEL_URL, {
+    const response = await fetch(PROXY_URL, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

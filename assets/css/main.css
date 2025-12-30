@@ -878,6 +878,22 @@
   background-clip: text;
 }
 
+/* Timeline Node Pulse Animation */
+.timeline-node.pulse {
+  animation: node-pulse 2s ease-in-out infinite;
+}
+
+@keyframes node-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--color-success), 0 0 40px var(--color-success);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--color-success), 0 0 60px var(--color-success);
+    transform: scale(1.1);
+  }
+}
+
 /* Responsive Typography */
 @media (max-width: 768px) {
   h1 { font-size: var(--text-4xl); }

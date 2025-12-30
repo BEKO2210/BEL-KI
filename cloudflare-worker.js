@@ -31,6 +31,8 @@ export default {
     try {
       // Parse request body
       const body = await request.json();
+      console.log('Worker received body:', JSON.stringify(body, null, 2));
+
       const { messages, max_tokens, temperature, top_p } = body;
 
       // Check if HF_TOKEN secret is configured
@@ -45,8 +47,10 @@ export default {
 
       // Validate messages
       if (!messages || !Array.isArray(messages)) {
+        console.log('Validation failed - messages:', messages, 'isArray:', Array.isArray(messages));
         return new Response(JSON.stringify({
-          error: 'Missing required field: messages (must be array)'
+          error: 'Missing required field: messages (must be array)',
+          debug: { received: body, messagesType: typeof messages, messagesValue: messages }
         }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }

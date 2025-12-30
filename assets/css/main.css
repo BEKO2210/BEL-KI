@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   z-index: var(--z-sticky);
-  padding: var(--space-5) var(--space-6);
+  padding: var(--space-3) var(--space-6);
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--glass-border);
@@ -42,7 +42,7 @@
 }
 
 .logo img {
-  height: 60px;
+  height: 85px;
   width: auto;
   object-fit: contain;
   transition: transform var(--transition-base);
@@ -99,9 +99,13 @@
 
 /* Mobile Menu */
 @media (max-width: 768px) {
+  .logo img {
+    height: 65px;
+  }
+
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 90px;
     right: -100%;
     flex-direction: column;
     background: var(--glass-bg);

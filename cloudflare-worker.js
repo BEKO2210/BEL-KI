@@ -54,7 +54,7 @@ export default {
       }
 
       // Forward to HuggingFace (Token kommt aus env.HF_TOKEN)
-      const hfResponse = await fetch('https://api-inference.huggingface.co/models/beko2210/Bel-KI-v1', {
+      const hfResponse = await fetch('https://router.huggingface.co/models/beko2210/Bel-KI-v1', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${env.HF_TOKEN}`,

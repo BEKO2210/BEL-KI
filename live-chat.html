@@ -410,7 +410,7 @@
   </div>
 
   <!-- Token Setup Modal -->
-  <div id="tokenModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+  <div id="tokenModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.95); z-index: 9999; align-items: center; justify-content: center; padding: 1rem; display: none;">
     <div style="background: var(--glass-bg); backdrop-filter: blur(20px); border: 2px solid var(--color-cyan); border-radius: 1.5rem; padding: 2rem; max-width: 500px; width: 100%; box-shadow: 0 0 50px rgba(0, 243, 255, 0.5);">
       <h2 style="font-size: 1.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--color-cyan), var(--color-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
         🔑 HuggingFace Token eingeben
@@ -452,6 +452,8 @@
       const tokenInput = document.getElementById('tokenInput');
       const saveTokenBtn = document.getElementById('saveTokenBtn');
 
+      console.log('Token check:', token ? 'Token exists' : 'No token');
+
       if (!token) {
         // Show modal if no token
         modal.style.display = 'flex';
@@ -460,11 +462,18 @@
       // Save token button
       saveTokenBtn.addEventListener('click', () => {
         const inputToken = tokenInput.value.trim();
+        console.log('Input token:', inputToken);
+        console.log('Starts with hf_:', inputToken.startsWith('hf_'));
+
         if (inputToken && inputToken.startsWith('hf_')) {
+          console.log('Saving token...');
           localStorage.setItem('hf_token', inputToken);
+          console.log('Token saved, hiding modal...');
           modal.style.display = 'none';
+          console.log('Reloading page...');
           window.location.reload(); // Reload to initialize chat
         } else {
+          console.log('Invalid token format');
           alert('Bitte gib einen gültigen HuggingFace Token ein (beginnt mit "hf_")');
         }
       });
@@ -472,6 +481,7 @@
       // Enter key to save
       tokenInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
+          console.log('Enter key pressed');
           saveTokenBtn.click();
         }
       });

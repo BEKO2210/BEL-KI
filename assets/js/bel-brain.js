@@ -217,17 +217,21 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
     // Build messages array for Chat Completions API
     const messages = buildMessages(userMessage);
 
+    const requestBody = {
+      messages: messages,
+      max_tokens: 512,
+      temperature: 0.7,
+      top_p: 0.9
+    };
+
+    console.log('Sending to Worker:', requestBody);
+
     const response = await fetch(PROXY_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        messages: messages,
-        max_tokens: 512,
-        temperature: 0.7,
-        top_p: 0.9
-      })
+      body: JSON.stringify(requestBody)
     });
 
     const data = await response.json();
@@ -252,9 +256,15 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
       }
     } else if (!response.ok) {
       // Other errors
+      console.error('API Error Response:', response.status, data);
+      const errorMsg = typeof data === 'object' && data.error
+        ? data.error
+        : typeof data === 'string'
+        ? data
+        : JSON.stringify(data, null, 2);
       return {
         success: false,
-        error: `API Fehler: ${response.status} - ${data.error || JSON.stringify(data)}`
+        error: `API Fehler: ${response.status} - ${errorMsg}`
       };
     }
 

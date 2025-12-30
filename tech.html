@@ -340,6 +340,159 @@ response = llm(
       </div>
     </section>
 
+    <!-- Master Version (FP16) -->
+    <section class="section" style="background: rgba(10, 10, 10, 0.5);">
+      <div class="container">
+        <h2 class="gradient-text mb-12 text-center">👑 Bel KI v1 Master (FP16 - Full Precision)</h2>
+
+        <p class="text-center" style="font-size: 1.125rem; max-width: 800px; margin: 0 auto 3rem; color: rgba(255,255,255,0.8);">
+          Dies ist die <strong>hochpräzise Master-Version</strong> von Bel KI. Sie dient als Basis für alle weiteren Quantisierungen und Anwendungen, die maximale mathematische Genauigkeit erfordern.
+        </p>
+
+        <!-- Master Details Card -->
+        <div class="glass-card fade-in" style="max-width: 900px; margin: 0 auto 3rem;">
+          <h3 style="color: #bc13fe; margin-bottom: 1.5rem; font-size: 1.5rem;">📋 Master Details</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+            <div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Format</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: #ffffff;">Safetensors (FP16)</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Parameter</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: #ffffff;">8 Milliarden</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Dateien</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: #ffffff;">4 Shards (~15 GB)</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Status</div>
+              <div style="font-size: 1.25rem; font-weight: 700; color: #00ff88;">✅ Final Master</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHA256 Hashes -->
+        <div class="glass-card fade-in" style="max-width: 900px; margin: 0 auto 3rem; background: rgba(188, 19, 254, 0.03); border-color: rgba(188, 19, 254, 0.3);">
+          <h4 style="color: #bc13fe; margin-bottom: 1rem; font-size: 1.125rem;">🔒 Integrität (SHA256 Checksums)</h4>
+          <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem; font-size: 0.875rem;">
+            Verifiziere die Master-Dateien nach dem Download:
+          </p>
+          <div style="display: grid; gap: 0.75rem;">
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(188, 19, 254, 0.2); border-radius: 0.5rem; padding: 0.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem;">model-00001-of-00004.safetensors</div>
+              <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #bc13fe; word-break: break-all; overflow-wrap: break-word;">E29C7521F403A244F558A1A7DB4B0C646A7EF3677B80B3E74A55DE2AF94FE00F</div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(188, 19, 254, 0.2); border-radius: 0.5rem; padding: 0.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem;">model-00002-of-00004.safetensors</div>
+              <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #bc13fe; word-break: break-all; overflow-wrap: break-word;">A6359CD242837A0272F1A019957AEA0D43D3809BFA4A9B80F86DFDABD92A34BD</div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(188, 19, 254, 0.2); border-radius: 0.5rem; padding: 0.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem;">model-00003-of-00004.safetensors</div>
+              <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #bc13fe; word-break: break-all; overflow-wrap: break-word;">4B643D7B3075DC1A196D318CDA3266D7A0B7191563662790B12CF6E6B6EAA91B</div>
+            </div>
+            <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(188, 19, 254, 0.2); border-radius: 0.5rem; padding: 0.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem;">model-00004-of-00004.safetensors</div>
+              <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #bc13fe; word-break: break-all; overflow-wrap: break-word;">F3035F0DAF6C283D967C22B4B17BCCC32927E3830A37121B814D536E5F8A4024</div>
+            </div>
+          </div>
+          <details style="margin-top: 1rem;">
+            <summary style="color: rgba(255,255,255,0.7); cursor: pointer; font-size: 0.875rem;">
+              Wie verifiziere ich die Hashes?
+            </summary>
+            <div style="margin-top: 1rem; padding: 1rem; background: rgba(0, 0, 0, 0.3); border-radius: 0.5rem; font-size: 0.875rem;">
+              <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.9);">
+                <strong>Linux/Mac:</strong>
+              </p>
+              <code style="display: block; background: rgba(0, 0, 0, 0.5); padding: 0.75rem; border-radius: 0.25rem; color: #00ff88; font-size: 0.75rem; overflow-x: auto; white-space: nowrap;">
+                sha256sum model-*.safetensors
+              </code>
+              <p style="margin: 1rem 0 0.5rem; color: rgba(255,255,255,0.9);">
+                <strong>Windows (PowerShell):</strong>
+              </p>
+              <code style="display: block; background: rgba(0, 0, 0, 0.5); padding: 0.75rem; border-radius: 0.25rem; color: #00ff88; font-size: 0.75rem; overflow-x: auto; white-space: nowrap;">
+                Get-FileHash model-00001-of-00004.safetensors -Algorithm SHA256
+              </code>
+            </div>
+          </details>
+        </div>
+
+        <!-- Master vs. GGUF Vergleich -->
+        <div class="glass-card fade-in" style="max-width: 900px; margin: 0 auto 3rem;">
+          <h4 style="color: #00f3ff; margin-bottom: 1.5rem; font-size: 1.25rem;">🚀 Master vs. GGUF - Was brauche ich?</h4>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(0, 243, 255, 0.3);">
+                  <th style="text-align: left; padding: 0.75rem; color: rgba(255,255,255,0.9);">Anwendungsfall</th>
+                  <th style="text-align: left; padding: 0.75rem; color: rgba(255,255,255,0.9);">Empfehlung</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                  <td style="padding: 0.75rem; color: rgba(255,255,255,0.8);">Chat auf eigenem PC (LM Studio, Ollama)</td>
+                  <td style="padding: 0.75rem; color: #00f3ff; font-weight: 600;">→ GGUF Q4_K_M (~4.9 GB)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                  <td style="padding: 0.75rem; color: rgba(255,255,255,0.8);">Python/Hugging Face Transformers</td>
+                  <td style="padding: 0.75rem; color: #bc13fe; font-weight: 600;">→ FP16 Master (~15 GB)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                  <td style="padding: 0.75rem; color: rgba(255,255,255,0.8);">Eigenes Fine-Tuning / Weiter-Training</td>
+                  <td style="padding: 0.75rem; color: #bc13fe; font-weight: 600;">→ FP16 Master (~15 GB)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                  <td style="padding: 0.75rem; color: rgba(255,255,255,0.8);">Maximale Qualität (Server mit viel VRAM)</td>
+                  <td style="padding: 0.75rem; color: #bc13fe; font-weight: 600;">→ FP16 Master (~15 GB)</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem; color: rgba(255,255,255,0.8);">Neue Quantisierungen erstellen</td>
+                  <td style="padding: 0.75rem; color: #bc13fe; font-weight: 600;">→ FP16 Master (~15 GB)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Python Code Beispiel -->
+        <div class="glass-card fade-in" style="max-width: 900px; margin: 0 auto;">
+          <h4 style="color: #00f3ff; margin-bottom: 1.5rem; font-size: 1.25rem;">💻 Master in Python laden</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span style="color: #00f3ff; font-family: var(--font-mono);">Python (Transformers)</span>
+              <button class="copy-btn">Kopieren</button>
+            </div>
+            <div class="code-content">
+<pre style="margin: 0; color: #e0e0e0;">
+<span style="color: #bc13fe;">from</span> transformers <span style="color: #bc13fe;">import</span> AutoModelForCausalLM, AutoTokenizer
+<span style="color: #bc13fe;">import</span> torch
+
+model_path = <span style="color: #00ff88;">"Beko2210/Bel-KI-v1-GGUF"</span>  <span style="color: #808080;"># oder lokaler Pfad</span>
+
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+model = AutoModelForCausalLM.from_pretrained(
+    model_path,
+    torch_dtype=torch.float16,
+    device_map=<span style="color: #00ff88;">"auto"</span>
+)
+
+<span style="color: #808080;"># Inference</span>
+inputs = tokenizer(<span style="color: #00ff88;">"Was ist die Hauptstadt von Bayern?"</span>, return_tensors=<span style="color: #00ff88;">"pt"</span>).to(<span style="color: #00ff88;">"cuda"</span>)
+outputs = model.generate(**inputs, max_new_tokens=<span style="color: #00f3ff;">100</span>)
+<span style="color: #bc13fe;">print</span>(tokenizer.decode(outputs[<span style="color: #00f3ff;">0</span>], skip_special_tokens=<span style="color: #bc13fe;">True</span>))
+</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="https://huggingface.co/Beko2210/Bel-KI-v1-GGUF" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+            🤗 Zum HuggingFace Repo
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Architecture Diagram -->
     <section class="section">
       <div class="container">

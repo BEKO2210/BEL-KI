@@ -271,6 +271,90 @@ ollama run bel-ki "Erkläre mir Quantencomputer"
 
 ---
 
+## 👑 Bel KI v1 Master (FP16 - Full Precision)
+
+Dies ist die **hochpräzise Master-Version** von Bel KI. Sie dient als Basis für alle weiteren Quantisierungen und Anwendungen, die maximale mathematische Genauigkeit erfordern.
+
+### 📋 Master Details
+
+| Eigenschaft | Wert |
+|-------------|------|
+| **Format** | Safetensors (FP16) |
+| **Parameter** | 8 Milliarden |
+| **Dateien** | 4 Shards (~15 GB total) |
+| **Training** | Finetuned auf GermanQuAD (1.420 Samples) |
+| **Status** | ✅ Final Master |
+| **Verwendung** | Transformers, vLLM, Forschung, Weiter-Training |
+
+### 🔒 Integrität (SHA256 Checksums)
+
+Um die Integrität der Master-Dateien zu gewährleisten, vergleiche die Hashes nach dem Download:
+
+<details>
+<summary><strong>📋 SHA256 Hashes anzeigen</strong></summary>
+
+```
+model-00001-of-00004.safetensors
+E29C7521F403A244F558A1A7DB4B0C646A7EF3677B80B3E74A55DE2AF94FE00F
+
+model-00002-of-00004.safetensors
+A6359CD242837A0272F1A019957AEA0D43D3809BFA4A9B80F86DFDABD92A34BD
+
+model-00003-of-00004.safetensors
+4B643D7B3075DC1A196D318CDA3266D7A0B7191563662790B12CF6E6B6EAA91B
+
+model-00004-of-00004.safetensors
+F3035F0DAF6C283D967C22B4B17BCCC32927E3830A37121B814D536E5F8A4024
+```
+
+**Verifizierung (Linux/Mac):**
+```bash
+sha256sum model-*.safetensors
+```
+
+**Verifizierung (Windows PowerShell):**
+```powershell
+Get-FileHash model-00001-of-00004.safetensors -Algorithm SHA256
+Get-FileHash model-00002-of-00004.safetensors -Algorithm SHA256
+Get-FileHash model-00003-of-00004.safetensors -Algorithm SHA256
+Get-FileHash model-00004-of-00004.safetensors -Algorithm SHA256
+```
+
+</details>
+
+### 🚀 Master vs. GGUF - Was brauche ich?
+
+| Anwendungsfall | Empfehlung |
+|----------------|------------|
+| Chat auf eigenem PC (LM Studio, Ollama) | → **GGUF Q4_K_M** (~4.9 GB) |
+| Python/Hugging Face Transformers | → **FP16 Master** (~15 GB) |
+| Eigenes Fine-Tuning / Weiter-Training | → **FP16 Master** |
+| Maximale Qualität (Server mit viel VRAM) | → **FP16 Master** |
+| Neue Quantisierungen erstellen | → **FP16 Master** |
+
+### 💻 Master in Python laden
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
+
+model_path = "Beko2210/Bel-KI-v1-GGUF"  # oder lokaler Pfad
+
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+model = AutoModelForCausalLM.from_pretrained(
+    model_path,
+    torch_dtype=torch.float16,
+    device_map="auto"
+)
+
+# Inference
+inputs = tokenizer("Was ist die Hauptstadt von Bayern?", return_tensors="pt").to("cuda")
+outputs = model.generate(**inputs, max_new_tokens=100)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+```
+
+---
+
 ## 🔬 Technische Deep-Dives
 
 ### Warum GermanQuAD?

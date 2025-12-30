@@ -334,11 +334,11 @@ Für kommerzielle Nutzung kontaktiere bitte: belkis.aslani@gmail.com
 
 ## ⚡ Quick Facts
 
-- 🎂 **Projekt gestartet**: Januar 2025
+- 🎂 **Projekt gestartet**: Dezember 2025
 - 🏋️ **Training Zeit**: 2,5 Stunden
 - 💰 **Hardware Budget**: 700 € (RTX 3070)
 - 🎯 **Ziel**: 100.000 € für H100-Cluster
-- 📊 **Aktuelles Funding**: 1.000 €
+- 📊 **Aktuelles Funding**: 1.000 € *Danke an Unbekannt ❤️
 - 🔥 **Motivation**: Unendlich
 
 ---

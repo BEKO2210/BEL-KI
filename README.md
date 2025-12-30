@@ -434,29 +434,29 @@ Q4_K_M ist der Sweet Spot zwischen:
 
 ## 🗺️ Roadmap: Von 8B zu AGI
 
+### Q4 2025 - Mobile Revolution 📱
+- [x] **IQ2_M Quantisierung (2.8 GB)** Released!
+- [x] **Optimiert für Smartphones & Tablets** 
+- [x] **100% Offline-fähig** 
+- [ ] Native iOS & Android Apps (in Entwicklung)
+
 ### Q2 2026 - Community & Infrastructure
 - [ ] Discord Server für Community
-- [ ] HuggingFace Model Hub Integration (✅ Done!)
-- [ ] Umfassende Dokumentation
+- [x] HuggingFace Model Hub Integration 
+- [x] Umfassende Dokumentation
 - [ ] API & SDK für Entwickler
 
-### Q3 2026 - Mit 100k Funding: Der Sprung zu 70B
+### Q4 2026 - Mit 100k Funding: Der Sprung zu 70B
 - [ ] H100-Cluster Miete (3 Monate)
 - [ ] Llama-3.1-70B Training
 - [ ] Erweiterter deutscher Datensatz (100k+ Samples)
 - [ ] Multimodales Training (Code, Reasoning)
 
-### Q4 2026 - Desktop & CLI Tools
+### Q1 2027 - Desktop & CLI Tools
 - [ ] Electron-basierte Desktop App
 - [ ] CLI für Power-User
 - [ ] VS Code Extension
 - [ ] Docker Container
-
-### Q1 2025 - Mobile Revolution 📱
-- [x] **IQ2_M Quantisierung (2.8 GB)** ✅ Released!
-- [x] **Optimiert für Smartphones & Tablets** ✅
-- [x] **100% Offline-fähig** ✅
-- [ ] Native iOS & Android Apps (in Entwicklung)
 
 ### Beyond - Multimodal & AGI-Ready
 - [ ] Vision-Language-Modelle

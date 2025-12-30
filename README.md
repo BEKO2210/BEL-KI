@@ -27,6 +27,27 @@ Während Tech-Giganten Milliarden in KI pumpen und dir erzählen, was du hören 
 
 ---
 
+## 📦 Verfügbare Formate
+
+Dieses Repository enthält **alle Formate** von Bel KI v1:
+
+| Format | Dateien | Größe | Verwendung |
+|--------|---------|-------|------------|
+| **🔥 GGUF Q4_K_M** | `Bel-KI-v1-Q4_K_M.gguf` | ~4.92 GB | LM Studio, Ollama, llama.cpp |
+| **📊 16-bit (FP16)** | `model-0000X-of-00004.safetensors` | ~15 GB | Transformers, vLLM, Forschung |
+| **🔧 LoRA Adapter** | `adapter_model.safetensors` | ~168 MB | Merge mit Base-Model |
+
+### Welches Format brauche ich?
+
+| Anwendungsfall | Empfohlenes Format |
+|----------------|-------------------|
+| Chat auf eigenem PC | GGUF Q4_K_M |
+| Python/Hugging Face Transformers | 16-bit Safetensors |
+| Eigenes Weiter-Training | LoRA Adapter |
+| Maximale Qualität (Server) | 16-bit Safetensors |
+
+---
+
 ## 🚀 Aktueller Stand: BEL KI v1.0
 
 ### Technische Spezifikationen

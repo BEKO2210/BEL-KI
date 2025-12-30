@@ -66,21 +66,30 @@ Dies ist die **hochpräzise Master-Version** von Bel KI. Sie dient als Basis fü
 
 ### 🔒 Integrität (SHA256 Checksums)
 
-Um die Integrität der Master-Dateien zu gewährleisten, vergleiche die Hashes nach dem Download:
+Verifiziere die Integrität der Master-Dateien nach dem Download:
 
-| Datei | SHA256 Hash |
-|-------|-------------|
-| `model-00001-of-00004.safetensors` | `E29C7521F403A244F558A1A7DB4B0C646A7EF3677B80B3E74A55DE2AF94FE00F` |
-| `model-00002-of-00004.safetensors` | `A6359CD242837A0272F1A019957AEA0D43D3809BFA4A9B80F86DFDABD92A34BD` |
-| `model-00003-of-00004.safetensors` | `4B643D7B3075DC1A196D318CDA3266D7A0B7191563662790B12CF6E6B6EAA91B` |
-| `model-00004-of-00004.safetensors` | `F3035F0DAF6C283D967C22B4B17BCCC32927E3830A37121B814D536E5F8A4024` |
+```
+model-00001-of-00004.safetensors
+E29C7521F403A244F558A1A7DB4B0C646A7EF3677B80B3E74A55DE2AF94FE00F
 
-**Verifizierung (Linux/Mac):**
+model-00002-of-00004.safetensors
+A6359CD242837A0272F1A019957AEA0D43D3809BFA4A9B80F86DFDABD92A34BD
+
+model-00003-of-00004.safetensors
+4B643D7B3075DC1A196D318CDA3266D7A0B7191563662790B12CF6E6B6EAA91B
+
+model-00004-of-00004.safetensors
+F3035F0DAF6C283D967C22B4B17BCCC32927E3830A37121B814D536E5F8A4024
+```
+
+**Wie verifiziere ich die Hashes?**
+
+Linux/Mac:
 ```bash
 sha256sum model-*.safetensors
 ```
 
-**Verifizierung (Windows PowerShell):**
+Windows (PowerShell):
 ```powershell
 Get-FileHash model-00001-of-00004.safetensors -Algorithm SHA256
 ```
@@ -248,14 +257,10 @@ BEL KI v1.0 (Final Loss: 0.530)
 # 1. Modell downloaden von HuggingFace
 wget https://huggingface.co/Beko2210/Bel-KI-v1-GGUF/resolve/main/Bel-KI-v1-Q4_K_M.gguf
 
-# 2. SHA256 Hash verifizieren (optional)
-sha256sum Bel-KI-v1-Q4_K_M.gguf
-# Expected: 8B97EC63954565EBF6BB8F495E854957FD9D605EB84FAF7795D5FFB101BD0624
-
-# 3. llama.cpp installieren
+# 2. llama.cpp installieren
 pip install llama-cpp-python
 
-# 4. Modell laden und nutzen
+# 3. Modell laden und nutzen
 python
 ```
 
@@ -279,6 +284,27 @@ response = llm(
 )
 
 print(response['choices'][0]['text'])
+```
+
+### 🔒 SHA256 Checksumme (Sicherheit)
+
+Verifiziere die Integrität nach dem Download:
+
+```
+Bel-KI-v1-Q4_K_M.gguf
+8B97EC63954565EBF6BB8F495E854957FD9D605EB84FAF7795D5FFB101BD0624
+```
+
+**Wie verifiziere ich die Hashes?**
+
+Linux/Mac:
+```bash
+sha256sum Bel-KI-v1-Q4_K_M.gguf
+```
+
+Windows (PowerShell):
+```powershell
+Get-FileHash Bel-KI-v1-Q4_K_M.gguf -Algorithm SHA256
 ```
 
 ### Alternative: Ollama

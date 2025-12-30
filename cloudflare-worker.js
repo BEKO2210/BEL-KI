@@ -65,7 +65,7 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'beko2210/Bel-KI-v1',
+          model: 'Beko2210/Bel-KI-v1-GGUF',
           messages: messages,
           max_tokens: max_tokens || 512,
           temperature: temperature || 0.7,

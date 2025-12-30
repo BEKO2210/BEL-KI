@@ -1,7 +1,7 @@
 /**
  * BEL BRAIN - Client-Side AI Chat Logic
  * HuggingFace Router API (Chat Completions)
- * Model: beko2210/Bel-KI-v1
+ * Model: Beko2210/Bel-KI-v1-GGUF
  */
 
 // ============================================

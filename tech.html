@@ -31,6 +31,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="tech.html">Technologie</a></li>
         <li><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="live-chat.html" style="color: #00f3ff;">Live Chat (BETA)</a></li>
         <li><a href="legal.html">Impressum</a></li>
       </ul>
       <div class="burger-menu" aria-label="Menu Toggle">
@@ -196,7 +197,7 @@
                 <strong>Kontext:</strong> 128k Tokens
               </li>
               <li style="padding: 0.5rem 0;">
-                <strong>Format:</strong> GGUF (Q4_K_M)
+                <strong>Formate:</strong> Q4_K_M, IQ2_M, FP16
               </li>
             </ul>
           </div>
@@ -225,8 +226,104 @@
       </div>
     </section>
 
-    <!-- Training Details -->
+    <!-- Available Formats -->
     <section class="section">
+      <div class="container">
+        <h2 class="gradient-text mb-12 text-center">Verfügbare Formate</h2>
+
+        <p class="text-center" style="font-size: 1.125rem; max-width: 800px; margin: 0 auto 3rem; color: rgba(255,255,255,0.8);">
+          BEL KI v1 ist in mehreren Formaten verfügbar - optimiert für verschiedene Geräte und Anwendungsfälle.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+          <!-- Q4_K_M -->
+          <div class="glass-card fade-in" style="background: rgba(0, 243, 255, 0.05); border-color: rgba(0, 243, 255, 0.3);">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div style="font-size: 3rem;">🖥️</div>
+            </div>
+            <h3 class="text-center" style="color: #00f3ff; margin-bottom: 1rem;">Q4_K_M (Desktop)</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>Größe:</strong> ~4.9 GB
+              </li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>RAM:</strong> 6-8 GB
+              </li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>Qualität:</strong> ⭐⭐⭐⭐
+              </li>
+              <li style="padding: 0.5rem 0;">
+                <strong>Empfohlen für:</strong> LM Studio, Ollama, Desktop-PCs
+              </li>
+            </ul>
+          </div>
+
+          <!-- IQ2_M -->
+          <div class="glass-card fade-in" style="background: rgba(0, 255, 136, 0.05); border-color: rgba(0, 255, 136, 0.3);">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div style="font-size: 3rem;">📱</div>
+              <span class="badge badge-success" style="font-size: 0.75rem; margin-top: 0.5rem;">NEU!</span>
+            </div>
+            <h3 class="text-center" style="color: #00ff88; margin-bottom: 1rem;">IQ2_M (Mobile)</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>Größe:</strong> ~2.8 GB
+              </li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>RAM:</strong> 4 GB
+              </li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>Qualität:</strong> ⭐⭐⭐
+              </li>
+              <li style="padding: 0.5rem 0;">
+                <strong>Empfohlen für:</strong> Smartphones, Tablets, Raspberry Pi
+              </li>
+            </ul>
+          </div>
+
+          <!-- FP16 -->
+          <div class="glass-card fade-in" style="background: rgba(188, 19, 254, 0.05); border-color: rgba(188, 19, 254, 0.3);">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div style="font-size: 3rem;">🚀</div>
+            </div>
+            <h3 class="text-center" style="color: #bc13fe; margin-bottom: 1rem;">FP16 (Server)</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>Größe:</strong> ~16 GB
+              </li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>VRAM:</strong> 16+ GB
+              </li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <strong>Qualität:</strong> ⭐⭐⭐⭐⭐
+              </li>
+              <li style="padding: 0.5rem 0;">
+                <strong>Empfohlen für:</strong> Server, Weiter-Training, Forschung
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="glass-card fade-in" style="max-width: 700px; margin: 3rem auto 0;">
+          <h3 style="color: #00f3ff; margin-bottom: 1.5rem; text-align: center;">SHA256 Checksums (Sicherheit)</h3>
+          <p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; text-align: center;">
+            Verifiziere die Integrität nach dem Download:
+          </p>
+          <div style="background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 0.5rem; font-family: var(--font-mono); font-size: 0.875rem; overflow-x: auto;">
+            <div style="margin-bottom: 0.75rem;">
+              <strong style="color: #00f3ff;">Q4_K_M:</strong><br/>
+              <span style="color: rgba(255,255,255,0.7); word-break: break-all;">8B97EC63954565EBF6BB8F495E854957...</span>
+            </div>
+            <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+              <code style="color: #00ff88;">Get-FileHash Bel-KI-v1-Q4_K_M.gguf</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Training Details -->
+    <section class="section" style="background: rgba(10, 10, 10, 0.5);">
       <div class="container">
         <h2 class="gradient-text mb-12 text-center">Optimierungs-Stack</h2>
 

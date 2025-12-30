@@ -193,25 +193,25 @@ Q4_K_M ist der Sweet Spot zwischen:
 
 ## 🗺️ Roadmap: Von 8B zu AGI
 
-### Q2 2025 - Community & Infrastructure
+### Q2 2026 - Community & Infrastructure
 - [ ] Discord Server für Community
 - [ ] HuggingFace Model Hub Integration (✅ Done!)
 - [ ] Umfassende Dokumentation
 - [ ] API & SDK für Entwickler
 
-### Q3 2025 - Mit 100k Funding: Der Sprung zu 70B
+### Q3 2026 - Mit 100k Funding: Der Sprung zu 70B
 - [ ] H100-Cluster Miete (3 Monate)
 - [ ] Llama-3.1-70B Training
 - [ ] Erweiterter deutscher Datensatz (100k+ Samples)
 - [ ] Multimodales Training (Code, Reasoning)
 
-### Q4 2025 - Desktop & CLI Tools
+### Q4 2026 - Desktop & CLI Tools
 - [ ] Electron-basierte Desktop App
 - [ ] CLI für Power-User
 - [ ] VS Code Extension
 - [ ] Docker Container
 
-### 2026 - Mobile Revolution
+### 2027 - Mobile Revolution
 - [ ] Native iOS & Android Apps
 - [ ] On-Device Inference
 - [ ] 100% Offline-fähig

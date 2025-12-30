@@ -1,6 +1,6 @@
 /**
  * BEL BRAIN - Client-Side AI Chat Logic
- * Hugging Face Inference API Integration
+ * HuggingFace Router API (Chat Completions)
  * Model: beko2210/Bel-KI-v1
  */
 
@@ -81,8 +81,8 @@ async function checkModelStatus() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        inputs: "Test",
-        parameters: { max_new_tokens: 1 }
+        messages: [{ role: 'user', content: 'Test' }],
+        max_tokens: 1
       })
     });
 
@@ -214,8 +214,8 @@ async function getAIResponse(userMessage) {
 
 async function queryHuggingFace(userMessage, retryAttempt = 0) {
   try {
-    // Build prompt with Llama-3 template
-    const prompt = buildPrompt(userMessage);
+    // Build messages array for Chat Completions API
+    const messages = buildMessages(userMessage);
 
     const response = await fetch(PROXY_URL, {
       method: 'POST',
@@ -223,14 +223,10 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        inputs: prompt,
-        parameters: {
-          max_new_tokens: 512,
-          temperature: 0.7,
-          top_p: 0.9,
-          do_sample: true,
-          return_full_text: false
-        }
+        messages: messages,
+        max_tokens: 512,
+        temperature: 0.7,
+        top_p: 0.9
       })
     });
 
@@ -258,15 +254,15 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
       // Other errors
       return {
         success: false,
-        error: `API Fehler: ${response.status} - ${data.error || 'Unbekannter Fehler'}`
+        error: `API Fehler: ${response.status} - ${data.error || JSON.stringify(data)}`
       };
     }
 
-    // Successful response
-    if (data && data[0] && data[0].generated_text) {
+    // Successful response (Chat Completions format)
+    if (data && data.choices && data.choices[0] && data.choices[0].message) {
       return {
         success: true,
-        text: cleanResponse(data[0].generated_text)
+        text: data.choices[0].message.content.trim()
       };
     } else {
       return {
@@ -283,33 +279,26 @@ async function queryHuggingFace(userMessage, retryAttempt = 0) {
 }
 
 // ============================================
-// PROMPT ENGINEERING
+// MESSAGE BUILDING (Chat Completions Format)
 // ============================================
 
-function buildPrompt(userMessage) {
-  // Llama-3 Template with system prompt
+function buildMessages(userMessage) {
+  // System prompt
   const systemPrompt = "Du bist Bel KI, eine präzise deutsche KI ohne Zensur. Du antwortest direkt, ehrlich und faktenbasiert.";
 
-  const prompt = `<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+  // Build messages array for Chat Completions API
+  const messages = [
+    {
+      role: 'system',
+      content: systemPrompt
+    },
+    {
+      role: 'user',
+      content: userMessage
+    }
+  ];
 
-${systemPrompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
-
-${userMessage}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-
-`;
-
-  return prompt;
-}
-
-function cleanResponse(text) {
-  // Remove any trailing template tokens
-  text = text.replace(/<\|eot_id\|>/g, '');
-  text = text.replace(/<\|end_of_text\|>/g, '');
-
-  // Trim whitespace
-  text = text.trim();
-
-  return text;
+  return messages;
 }
 
 // ============================================

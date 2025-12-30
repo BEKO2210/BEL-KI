@@ -1,7 +1,7 @@
 /**
- * Cloudflare Worker - HuggingFace API Proxy (SECURE VERSION)
+ * Cloudflare Worker - HuggingFace Router Proxy (CHAT COMPLETIONS)
  * Token wird als Cloudflare Secret gespeichert (nicht im Code!)
- * Frontend sendet nur inputs/parameters, KEIN Token
+ * Verwendet das neue Chat Completions API (OpenAI-kompatibel)
  */
 
 export default {
@@ -31,7 +31,7 @@ export default {
     try {
       // Parse request body
       const body = await request.json();
-      const { inputs, parameters } = body;
+      const { messages, max_tokens, temperature, top_p } = body;
 
       // Check if HF_TOKEN secret is configured
       if (!env.HF_TOKEN) {
@@ -43,27 +43,30 @@ export default {
         });
       }
 
-      // Validate inputs
-      if (!inputs) {
+      // Validate messages
+      if (!messages || !Array.isArray(messages)) {
         return new Response(JSON.stringify({
-          error: 'Missing required field: inputs'
+          error: 'Missing required field: messages (must be array)'
         }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
       }
 
-      // Forward to HuggingFace (Token kommt aus env.HF_TOKEN)
-      // Trying legacy endpoint for private model access
-      const hfResponse = await fetch('https://api-inference.huggingface.co/models/beko2210/Bel-KI-v1', {
+      // Forward to HuggingFace Router (Chat Completions API)
+      const hfResponse = await fetch('https://router.huggingface.co/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${env.HF_TOKEN}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          inputs,
-          parameters: parameters || {}
+          model: 'beko2210/Bel-KI-v1',
+          messages: messages,
+          max_tokens: max_tokens || 512,
+          temperature: temperature || 0.7,
+          top_p: top_p || 0.9,
+          stream: false
         })
       });
 

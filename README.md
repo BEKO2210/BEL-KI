@@ -292,7 +292,7 @@ Dieses Projekt ist Open Source. Du kannst:
 
 ## 🏆 Das Team
 
-### Belkis Aslani (aka Beat to the Kiss)
+### Belkis Aslani
 **Founder, Developer, Trainer**
 
 - 🎓 Self-taught AI Engineer

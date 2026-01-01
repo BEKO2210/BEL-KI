@@ -44,7 +44,7 @@ Dieses Repository enthält **alle Formate** von Bel KI v1:
 - ✅ Nur **2.8 GB** statt 4.9 GB
 - ✅ Läuft auf **Smartphones & Tablets** (4 GB RAM)
 - ✅ **100% offline** - kein Internet nötig
-- ✅ **Android/iOS Ready** - App folgt Q1 2025
+- ✅ **Android/iOS Ready** - App folgt Q1~Q2 2026
 - ✅ Optimiert für **Raspberry Pi** & Low-Power Geräte
 
 ---

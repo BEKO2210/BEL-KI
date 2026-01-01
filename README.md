@@ -125,7 +125,7 @@ inputs = tokenizer("Was ist die Hauptstadt von Bayern?", return_tensors="pt").to
 outputs = model.generate(**inputs, max_new_tokens=100)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
-```
+
 
 
 ### Welches Format brauche ich?
